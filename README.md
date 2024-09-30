@@ -51,4 +51,10 @@ docker-compose run artisan <command>
    docker-compose run artisan migrate
 ```
 
+7. Если выдает подобную ошибку, то меняем порт для mysql в docker-compose.yml на какой-нибудь другой
+```dockerfile
+  SQLSTATE[HY000]: General error: 1030 Got error 168 - 'Unknown (generic) error from engine' from storage engine (Connection: mysql, SQL: create table `migrations` (`id` int unsigned not null auto_increment primary key, `migration` varchar(255) not null, `batch` int not null) default character set utf8mb4 collate 'utf8mb4_unicode_ci')
+
+```
+
 
