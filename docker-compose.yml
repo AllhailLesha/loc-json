@@ -11,29 +11,30 @@ services:
       - php
   php:
     build:
-      context: dockerFiles
+      context: dockerfiles
       dockerfile: php.Dockerfile
     user: "1000:1000"
     volumes:
       - ./src:/var/www/laravel
   mysql:
     image: mysql:8.0
+    restart: always
     ports:
       - "3326:3306"
     env_file:
       - env/mysql.env
     volumes:
-      - /tmp/db_data:/var/lib/mysql
+      - ./tmp/db_data:/var/lib/mysql
   composer:
     build:
-      context: dockerFiles
+      context: dockerfiles
       dockerfile: composer.Dockerfile
     user: "1000:1000"
     volumes:
       - ./src:/var/www/laravel
   artisan:
     build:
-      context: dockerFiles
+      context: dockerfiles
       dockerfile: php.Dockerfile
     user: "1000:1000"
     volumes:
