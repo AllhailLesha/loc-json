@@ -24,7 +24,7 @@ services:
     env_file:
       - env/mysql.env
     volumes:
-      - ./tmp/db_data:/var/lib/mysql
+      - db_data:/var/lib/mysql
   composer:
     build:
       context: dockerfiles
@@ -40,3 +40,5 @@ services:
     volumes:
       - ./src:/var/www/laravel
     entrypoint: ["php", "/var/www/laravel/artisan"]
+volumes:
+  db_data:
