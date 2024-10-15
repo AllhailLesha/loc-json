@@ -26,7 +26,8 @@ docker-compose run artisan <command>
    docker-compose run composer create-project laravel/laravel .
    ```
 
-Если возникнет подобная ошибка, надо дать права пользователя всему каталогу проекта sudo chown -R user:user <путь-до-каталога>
+Если возникнет подобная ошибка, надо дать права пользователя всему каталогу проекта sudo chown -R user:user <путь-до-каталога>.
+Еще есть вариант, что забагались пути в контейнере, тогда надо удалить контейнеры и образы и запустить заново
 ```
    Creating a "laravel/laravel" project at "./"
    https://repo.packagist.org could not be fully loaded (rename(/tmp/cache/repo/https---repo.packagist.org/packages.json.66fad859af7b65.37140140.tmp,/tmp/cache/repo/https---repo.packagist.org/packages.json): Operation not permitted), package information was loaded from the local cache and may be out of date
