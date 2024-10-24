@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Language;
+use App\Models\Project;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Database\Factories\LanguageFactory;
@@ -16,6 +17,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(10)->create();
-        Language::factory(5)->create();
+        Language::factory(10)->create();
+
+        $this->call([
+            ProjectsSeeder::class
+        ]);
     }
 }
