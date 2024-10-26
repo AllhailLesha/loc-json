@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Facades\Projects;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Project\StoreProjectRequest;
 use App\Http\Requests\Project\UpdateProjectRequest;
+use App\Http\Resources\Project\ProjectResource;
 use App\Models\Project;
+use App\Services\Project\ProjectService;
 use Illuminate\Support\Arr;
 
 class ProjectController extends Controller
@@ -37,9 +40,11 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProjectRequest $request, Project $projects)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        return new ProjectResource(
+            Projects::setProject($project)->update($request->validated())
+        );
     }
 
     /**

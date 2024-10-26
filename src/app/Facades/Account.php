@@ -2,7 +2,6 @@
 
 namespace App\Facades;
 
-use App\Http\Requests\Account\CreateAccountRequest;
 use Illuminate\Support\Facades\Facade;
 
 /**

@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind('account_service', AccountService::class);
-        $this->app->bind('project_service', ProjectService::class);
+        $this->app->bind('projects', ProjectService::class);
     }
 
     /**

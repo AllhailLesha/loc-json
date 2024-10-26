@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Project;
 
+use App\Facades\Projects;
 use App\Http\Resources\Project\ProjectResource;
 use App\Services\Project\ProjectService;
 use Illuminate\Foundation\Http\FormRequest;
@@ -23,10 +24,10 @@ class StoreProjectRequest extends FormRequest
         ];
     }
 
-    public function createProject()
+    public function createProject(): ProjectResource
     {
         return new ProjectResource(
-            ProjectService::create($this->validated())
+            Projects::create($this->validated())
         );
     }
 }
