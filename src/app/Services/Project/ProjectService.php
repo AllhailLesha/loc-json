@@ -15,8 +15,9 @@ class ProjectService
             'progress' => 0,
             'source_language_id' => Arr::get($data, 'languages.source'),
             'target_language_ids' => Arr::get($data, 'languages.target'),
-            'documents' => [],
-            'performers' => [],
+            'user_id' => auth()->id(),
+            'document_ids' => [],
+            'performer_ids' => [],
             'settings' => Arr::get($data, 'settings.useMachineTranslate')
         ]);
     }

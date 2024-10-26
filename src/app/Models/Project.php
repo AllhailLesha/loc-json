@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 
 class Project extends Model
@@ -19,16 +21,22 @@ class Project extends Model
             'progress',
             'source_language_id',
             'target_language_ids',
-            'documents',
-            'performers',
+            'user_id',
+            'document_ids',
+            'performer_ids',
             'settings',
         ];
 
     protected $casts = [
         'target_language_ids' => 'array',
-        'documents' => 'array',
-        'performers' => 'array'
+        'document_ids' => 'array',
+        'performer_ids' => 'array'
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     public function sourceLanguage(): BelongsTo
     {

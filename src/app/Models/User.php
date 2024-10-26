@@ -50,4 +50,12 @@ class User extends Authenticatable
             'account_type' => AccountType::class,
         ];
     }
+
+    public static function getRandomUsers(): array
+    {
+        return self::query()
+            ->inRandomOrder()->limit(2)
+            ->get()
+            ->toArray();
+    }
 }

@@ -5,6 +5,8 @@ namespace Database\Factories;
 use App\Enums\DocumentStatus;
 use App\Http\Resources\Languages\MinifiedLanguageResource;
 use App\Models\Language;
+use App\Models\Project;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Lang;
 
@@ -28,18 +30,8 @@ class ProjectFactory extends Factory
             'progress' =>  round(fake()->randomFloat(max: 100), 1),
             'source_language_id' => $sourceId,
             'target_language_ids' => Language::getRandomLanguageIds($sourceId),
-            'documents' => [
-                'id' => fake()->randomNumber(),
-                'name' => 'article' . fake()->randomNumber() . '.json',
-                'status' => fake()->randomElement(DocumentStatus::class),
-                'progress' => fake()->randomFloat(100),
-            ],
-            'performers' => [
-                'id' => fake()->randomNumber(),
-                "name" => "Ivan Ivanov",
-                "email" => "ivan@yandex.ru",
-                "addedAt" => "25-12-2022 18:12"
-            ],
+            'document_ids' => [],
+            'performer_ids' => [],
             'settings' => fake()->boolean,
         ];
     }

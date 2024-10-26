@@ -19,9 +19,13 @@ return new class extends Migration
             $table->foreignId('source_language_id')
                 ->constrained('languages')
                 ->cascadeOnDelete();
+            $table->foreignId('user_id')
+                ->nullable()
+                ->constrained()
+                ->cascadeOnDelete();
             $table->json('target_language_ids')->nullable();
-            $table->json('documents')->nullable();
-            $table->json('performers')->nullable();
+            $table->json('document_ids')->nullable();
+            $table->json('performer_ids')->nullable();
             $table->boolean('settings')->default(false);
             $table->timestamps();
         });
