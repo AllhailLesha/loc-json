@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Exceptions\Project\ProjectNotFoundException;
 use App\Facades\Projects;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Project\StoreProjectRequest;
@@ -50,8 +51,9 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Project $projects)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return responseOk();
     }
 }

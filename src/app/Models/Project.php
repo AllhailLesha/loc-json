@@ -14,7 +14,6 @@ class Project extends Model
 
     protected $fillable =
         [
-            'name',
             'description',
             'progress',
             'source_language_id',
