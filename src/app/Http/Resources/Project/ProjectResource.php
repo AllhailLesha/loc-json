@@ -4,6 +4,7 @@ namespace App\Http\Resources\Project;
 
 use App\Http\Resources\Languages\MinifiedLanguageResource;
 use App\Models\Language;
+use Carbon\Carbon;
 use Carbon\Traits\Date;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -32,7 +33,7 @@ class ProjectResource extends JsonResource
                 'useMachineTranslate' => $this->settings,
             ],
 
-            'createdAt' => \Illuminate\Support\Facades\Date::now()->format('Y-m-d'),
+            'createdAt' => Carbon::parse($this->create_at)->format('Y-m-d H:i'),
         ];
     }
 }

@@ -34,5 +34,4 @@ class Language extends Model
             })
             ->toArray();
     }
-
 }
