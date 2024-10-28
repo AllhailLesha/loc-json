@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use App\Exceptions\Account\InvalidUserCredentialsException;
+use App\Exceptions\Account\NotAccessToOperationException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -20,6 +21,12 @@ return Application::configure(basePath: dirname(__DIR__))
            return response()->json([
                "status"=> false,
               "message" => __('exceptions.InvalidUserCredentials')
-           ]);
+           ], 401);
+        });
+        $exceptions->render(function (NotAccessToOperationException $e){
+         return response()->json([
+            'status' => false,
+            'message' =>  __('exceptions.NotAccessToOperation')
+         ], 403);
         });
     })->create();

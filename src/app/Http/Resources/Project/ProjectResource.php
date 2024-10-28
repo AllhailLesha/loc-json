@@ -28,7 +28,7 @@ class ProjectResource extends JsonResource
                 'target' => MinifiedLanguageResource::collection($this->targetLanguages()),
             ],
             'documents' => $this->documents,
-            'performers' => $this->performers,
+//            'performers' => $this->performers,
             'settings' => [
                 'useMachineTranslate' => $this->settings,
             ],

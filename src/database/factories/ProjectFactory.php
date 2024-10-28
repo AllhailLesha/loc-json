@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Enums\DocumentStatus;
 use App\Http\Resources\Languages\MinifiedLanguageResource;
+use App\Models\Document;
 use App\Models\Language;
 use App\Models\Project;
 use App\Models\User;
@@ -23,15 +24,13 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         $sourceId = Language::getRandomLanguageId();
-
+        $project = new Project();
         return [
             'name' => "OOO " . fake()->text(5),
             'description' => fake()->text,
             'progress' =>  round(fake()->randomFloat(max: 100), 1),
             'source_language_id' => $sourceId,
             'target_language_ids' => Language::getRandomLanguageIds($sourceId),
-            'document_ids' => [],
-            'performer_ids' => [],
             'settings' => fake()->boolean,
         ];
     }

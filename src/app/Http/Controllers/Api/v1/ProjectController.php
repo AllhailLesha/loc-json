@@ -10,6 +10,7 @@ use App\Http\Requests\Project\UpdateProjectRequest;
 use App\Http\Resources\Project\MinifiedProjectResource;
 use App\Http\Resources\Project\ProjectResource;
 use App\Models\Project;
+use App\Models\User;
 use App\Services\Project\ProjectService;
 use Illuminate\Support\Arr;
 
@@ -37,7 +38,7 @@ class ProjectController extends Controller
      */
     public function show(Project $projects)
     {
-        //
+
     }
 
     /**
