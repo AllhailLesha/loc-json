@@ -24,8 +24,7 @@ class MinifiedProjectResource extends JsonResource
                 'source' => new MinifiedLanguageResource($this->sourceLanguage),
                 'target' => MinifiedLanguageResource::collection($this->targetLanguages()),
             ],
-            'performersCount' => count($this->performer_ids),
-            'documents' => count($this->document_ids),
+            'documents' => $this->documents,
             'useMachineTranslate' => $this->settings,
             'createdAt' => Carbon::parse($this->create_at)->format('Y-m-d H:i'),
         ];

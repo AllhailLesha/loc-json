@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Document;
 use App\Models\Language;
 use App\Models\Project;
 use App\Models\User;
@@ -16,11 +17,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
         Language::factory(10)->create();
-
-        $this->call([
-            ProjectsSeeder::class
-        ]);
+        User::factory(10)
+            ->has(Project::factory(1)
+                ->has(Document::factory(3)))
+            ->create();
     }
 }

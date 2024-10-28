@@ -24,8 +24,6 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
             $table->json('target_language_ids')->nullable();
-            $table->json('document_ids')->nullable();
-            $table->json('performer_ids')->nullable();
             $table->boolean('settings')->default(false);
             $table->timestamps();
         });
