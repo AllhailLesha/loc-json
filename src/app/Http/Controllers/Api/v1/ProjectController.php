@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Exceptions\Project\ProjectNotFoundException;
 use App\Facades\Projects;
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\Project\ProjectAccessMiddleware;
 use App\Http\Requests\Project\StoreProjectRequest;
 use App\Http\Requests\Project\UpdateProjectRequest;
 use App\Http\Resources\Project\MinifiedProjectResource;
 use App\Http\Resources\Project\ProjectResource;
 use App\Models\Project;
-use App\Models\User;
-use App\Services\Project\ProjectService;
-use Illuminate\Support\Arr;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class ProjectController extends Controller
+
+class ProjectController extends Controller implements HasMiddleware
 {
     /**
      * Display a listing of the resource.
      */
+
+
     public function index()
     {
         return MinifiedProjectResource::collection(Project::query()
@@ -58,5 +60,12 @@ class ProjectController extends Controller
     {
         $project->delete();
         return responseOk();
+    }
+
+    public static function middleware(): array
+    {
+        return [
+            new Middleware(middleware: ProjectAccessMiddleware::class, only: ['update', 'destroy'])
+        ];
     }
 }

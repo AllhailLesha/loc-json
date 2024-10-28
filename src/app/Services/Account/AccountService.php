@@ -20,6 +20,9 @@ class AccountService
         ]);
     }
 
+    /**
+     * @throws InvalidUserCredentialsException
+     */
     public function signIn(string $email, string $password): string
     {
         $user = User::query()
