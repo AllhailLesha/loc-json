@@ -7,6 +7,7 @@ use App\Http\Resources\Document\DocumentResource;
 use App\Models\Document;
 use App\Models\Project;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Database\Eloquent\Collection;
 
 class DocumentService
 {
@@ -32,15 +33,8 @@ class DocumentService
     /**
      * @throws NotFoundException
      */
-    public function index(int $projectId)
+    public function index(): Collection
     {
-        $project = Project::query()->find($projectId);
-
-        if (is_null($project))
-        {
-            throw new NotFoundException();
-        }
-
-        return DocumentResource::collection($project->documents()->get());
+        return $this->project->documents()->get();
     }
 }
