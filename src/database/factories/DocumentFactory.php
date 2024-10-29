@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\DocumentStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -31,7 +32,9 @@ class DocumentFactory extends Factory
                     'key' => fake()->word(),
                     'value' => fake()->text,
                 ],
-            ]
+            ],
+            'status' => fake()->randomElement(DocumentStatus::class),
+            'progress' =>  round(fake()->randomFloat(max: 100), 1),
         ];
     }
 }

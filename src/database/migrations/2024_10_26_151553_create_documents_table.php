@@ -18,6 +18,8 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
             $table->string('name')->nullable();
+            $table->float('progress')->nullable()->default(0);
+            $table->string('status')->nullable()->default(\App\Enums\DocumentStatus::CREATE);
             $table->json('data')->nullable();
             $table->timestamps();
         });
