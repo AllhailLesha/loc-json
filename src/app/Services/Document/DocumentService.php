@@ -2,6 +2,8 @@
 
 namespace App\Services\Document;
 
+use App\Exceptions\Project\NotFoundException;
+use App\Http\Resources\Document\DocumentResource;
 use App\Models\Document;
 use App\Models\Project;
 use Illuminate\Http\JsonResponse;
@@ -25,5 +27,20 @@ class DocumentService
     {
         $this->project->documents()->createMany($data);
         return $this;
+    }
+
+    /**
+     * @throws NotFoundException
+     */
+    public function index(int $projectId)
+    {
+        $project = Project::query()->find($projectId);
+
+        if (is_null($project))
+        {
+            throw new NotFoundException();
+        }
+
+        return DocumentResource::collection($project->documents()->get());
     }
 }

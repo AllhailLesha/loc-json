@@ -15,7 +15,9 @@ class Document extends Model
     protected $fillable = [
         'project_id',
         'name',
-        'data'
+        'data',
+        'status',
+        'progress'
     ];
 
     protected $casts = [

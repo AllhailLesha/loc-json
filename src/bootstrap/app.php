@@ -29,4 +29,16 @@ return Application::configure(basePath: dirname(__DIR__))
             'message' =>  __('exceptions.NotAccessToOperation')
          ], 403);
         });
+        $exceptions->render(function (\App\Exceptions\Document\NotFoundException $e){
+            return response()->json([
+                'status' => false,
+                'message' =>  __('exceptions.NotAccessToOperation')
+            ], 404);
+        });
+        $exceptions->render(function (\App\Exceptions\Project\NotFoundException $e){
+            return response()->json([
+                'status' => false,
+                'message' =>  __('exceptions.NotAccessToOperation')
+            ], 404);
+        });
     })->create();

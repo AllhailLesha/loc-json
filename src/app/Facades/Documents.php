@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Facade;
  *
  * @method static \App\Services\Document\DocumentService setProject(Project|int $project)
  * @method static \App\Services\Document\DocumentService store(array $data)
+ * @method static array index(int $projectId)
  */
 class Documents extends Facade
 {
