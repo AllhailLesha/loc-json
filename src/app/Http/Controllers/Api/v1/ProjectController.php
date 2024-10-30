@@ -10,6 +10,7 @@ use App\Http\Requests\Project\UpdateProjectRequest;
 use App\Http\Resources\Project\MinifiedProjectResource;
 use App\Http\Resources\Project\ProjectResource;
 use App\Models\Project;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 
@@ -56,7 +57,7 @@ class ProjectController extends Controller implements HasMiddleware
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Project $project)
+    public function destroy(Project $project): JsonResponse
     {
         $project->delete();
         return responseOk();

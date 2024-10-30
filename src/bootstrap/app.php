@@ -32,13 +32,13 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (\App\Exceptions\Document\NotFoundException $e){
             return response()->json([
                 'status' => false,
-                'message' =>  __('exceptions.NotAccessToOperation')
+                'message' =>  __('exceptions.DocumentNotFoundException')
             ], 404);
         });
         $exceptions->render(function (\App\Exceptions\Project\NotFoundException $e){
             return response()->json([
                 'status' => false,
-                'message' =>  __('exceptions.NotAccessToOperation')
+                'message' =>  __('exceptions.ProjectNotFoundException')
             ], 404);
         });
     })->create();
