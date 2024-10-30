@@ -27,9 +27,7 @@ class DeleteDocumentMiddleware
          */
 
         $document = $request->route('document');
-        $project = is_null($document)
-            ? throw new NotFoundException()
-            : $document->project()->first();
+        $project = $document->project()->first();
 
         if (!$project->hasAccess())
         {

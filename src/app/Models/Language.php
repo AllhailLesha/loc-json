@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 
 class Language extends Model
@@ -33,5 +34,10 @@ class Language extends Model
                 return $el->id;
             })
             ->toArray();
+    }
+
+    public function translation(): HasMany
+    {
+        return $this->hasMany(Translation::class);
     }
 }

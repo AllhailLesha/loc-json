@@ -17,6 +17,8 @@ Route::controller(DocumentController::class)->prefix('v1/documents')->middleware
     Route::post('/', 'store')
         ->name('documents.store')
         ->middleware(StoreDocumentMiddleware::class);
+    Route::post('/{document}/import', 'import')
+        ->name('documents.import');
     Route::delete('/{document}', 'destroy')
         ->name('documents.destroy')
         ->middleware(DeleteDocumentMiddleware::class);
